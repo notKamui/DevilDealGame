@@ -77,6 +77,16 @@ class Board private constructor(
         fun onesAmount(width: Int, height: Int): Int = width * height - twosAmount - threesAmount - zerosAmount
     }
 
+    class Tile(
+        val score: Int,
+    ) {
+        var isRevealed: Boolean = false
+        var memoZero: Boolean = false
+        var memoOne: Boolean = false
+        var memoTwo: Boolean = false
+        var memoThree: Boolean = false
+    }
+
     operator fun get(x: Int, y: Int): Tile = tiles[y * width + x]
 
     companion object {
@@ -95,14 +105,4 @@ class Board private constructor(
 
         fun fromTiles(width: Int, height: Int, tiles: List<Tile>): Board = Board(width, height, tiles)
     }
-}
-
-class Tile(
-    val score: Int,
-) {
-    var isRevealed: Boolean = false
-    var memoZero: Boolean = false
-    var memoOne: Boolean = false
-    var memoTwo: Boolean = false
-    var memoThree: Boolean = false
 }
